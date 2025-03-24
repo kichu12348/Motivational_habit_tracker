@@ -1,0 +1,340 @@
+:root {
+    --primary-color: #FF6B6B;
+    --background-color: #FFECEC;
+    --accent-color: #FFD93D;
+    --text-color: #333333;
+    --card-bg: #ffffff;
+    --completed-color: #4CAF50;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+/* Mood Selector */
+.mood-selector {
+    margin-bottom: 30px;
+}
+
+.mood-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.mood-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mood-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+.mood-btn.active {
+    border-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.stats-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stats-card {
+    flex: 1;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.stats-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.progress-container {
+    height: 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 8px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.quote-container {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+blockquote {
+    font-style: italic;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    position: relative;
+}
+
+blockquote::before, blockquote::after {
+    content: '"';
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+#habit-form {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+#habit-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    font-size: 1rem;
+}
+
+#add-habit-btn {
+    width: 48px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#add-habit-btn:hover {
+    background-color: var(--accent-color);
+}
+
+.habit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.habit-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    animation: fadeIn 0.5s;
+}
+
+.checkbox-container {
+    margin-right: 15px;
+}
+
+.habit-checkbox {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.habit-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--completed-color);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.habit-content {
+    flex: 1;
+}
+
+.habit-text {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.habit-item.completed .habit-text {
+    text-decoration: line-through;
+    color: var(--completed-color);
+}
+
+.habit-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.habit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.habit-btn:hover {
+    opacity: 1;
+}
+
+.edit-btn:hover {
+    color: var(--accent-color);
+}
+
+.delete-btn:hover {
+    color: #f44336;
+}
+
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+body.motivated {
+    --primary-color: #FF6B6B;
+    --background-color: #FFECEC;
+    --accent-color: #FFD93D;
+}
+
+body.calm {
+    --primary-color: #4A90E2;
+    --background-color: #EAF6FF;
+    --accent-color: #50C878;
+}
+
+body.relaxed {
+    --primary-color: #4CAF50;
+    --background-color: #DFFFD6;
+    --accent-color: #FFC107;
+}
+
+body.confident {
+    --primary-color: #9C27B0;
+    --background-color: #F3E5F5;
+    --accent-color: #FF9800;
+}
+
+body.disciplined {
+    --primary-color: #212121;
+    --background-color: #F5F5F5;
+    --accent-color: #FF3D00;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.bounce {
+    animation: bounce 0.5s;
+}
+
+@media (max-width: 600px) {
+    .stats-container {
+        flex-direction: column;
+    }
+    
+    .mood-buttons {
+        flex-wrap: wrap;
+    }
+    
+    .habit-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .habit-actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+    
+    .checkbox-container {
+        margin-bottom: 10px;
+    }
+}
